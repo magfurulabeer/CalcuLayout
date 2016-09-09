@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B033C261D82A367000D561A /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B033C251D82A367000D561A /* Anchor.swift */; };
 		8B51D5431D82A08900167C5F /* CalcuLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B51D5421D82A08900167C5F /* CalcuLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B51D54B1D82A16400167C5F /* UIView+CalcuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B033C251D82A367000D561A /* Anchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		8B51D53F1D82A08900167C5F /* CalcuLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalcuLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B51D5421D82A08900167C5F /* CalcuLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalcuLayout.h; sourceTree = "<group>"; };
 		8B51D5441D82A08900167C5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CalcuLayout.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +51,9 @@
 			isa = PBXGroup;
 			children = (
 				8B51D5421D82A08900167C5F /* CalcuLayout.h */,
+				8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */,
 				8B51D5441D82A08900167C5F /* Info.plist */,
+				8B033C251D82A367000D561A /* Anchor.swift */,
 			);
 			path = CalcuLayout;
 			sourceTree = "<group>";
@@ -130,6 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B033C261D82A367000D561A /* Anchor.swift in Sources */,
+				8B51D54B1D82A16400167C5F /* UIView+CalcuLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +238,7 @@
 		8B51D5481D82A08900167C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -240,12 +249,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.magfurulabeer.CalcuLayout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8B51D5491D82A08900167C5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -278,6 +289,7 @@
 				8B51D5491D82A08900167C5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
