@@ -8,154 +8,90 @@
 
 import UIKit
 
-
-public func += (view: UIView, anchor: Anchor) -> Constraint? {
-//    view.topAnchor.
-    
-    var constraint = NSLayoutConstraint(item: view,
-                                        attribute: anchor.attribute,
-                                        relatedBy: Equal,
-                                        toItem: anchor.v,
-                                        attribute: anchor.attribute,
-                                        multiplier: 1,
-                                        constant: 0)
-    // Translates Auto Constraints to false?
-//    let xAnchorTypes = [AnchorType.Leading, AnchorType.Trailing, AnchorType.CenterX]
-//    let yAnchorTypes = [AnchorType.Top, AnchorType.Bottom, AnchorType.CenterY]
-//    let dimensionTypes = [AnchorType.Height, AnchorType.Width]
-    let viewAnchor = view.anchorOfType(anchor.type)
-//    if let viewAnchor = viewAnchor {
-//        var constraint = Constraint()
-//        if xAnchorTypes.contains(viewAnchor.type) {
-//            let xAnchor = viewAnchor as! XAnchor
-//            constraint = xAnchor.constraintEqualToAnchor(anchor as! XAnchor) as! Constraint
-//        } else if yAnchorTypes.contains(viewAnchor.type) {
-//            let yAnchor = viewAnchor as! YAnchor
-//            constraint = yAnchor.constraintEqualToAnchor(anchor as! YAnchor) as! Constraint
-//        } else if dimensionTypes.contains(viewAnchor.type) {
-//            let dimension = viewAnchor as! Dimension
-//            constraint = dimension.constraintEqualToAnchor(anchor as! Dimension) as! Constraint
-//        }
-////        constraint.active = true
-//        return constraint
-//    }
-    return nil
-}
-
-public func += (view: UIView, anchors: [Anchor]) -> [Constraint]? {
-    var constraints = [Constraint]()
-    for anchor in anchors {
-        if let constraint = (view += anchor) {
-            constraints.append(constraint)
-        } else {
-            return nil
-        }
-    }
-    return constraints
-}
-
-
-
 public extension UIView {
     
-    public func anchorOfType(type: AnchorType) -> Anchor? {
-        let anchor: Anchor?
-        switch type {
-        case .Top:
-            anchor = topAnchor as? YAnchor
-            anchor!.type = .Top
-        case .Bottom:
-            anchor = bottomAnchor as? YAnchor
-            anchor!.type = .Bottom
-        case .CenterY:
-            anchor = centerYAnchor as? YAnchor
-            anchor!.type = .CenterY
-        case .Leading:
-            anchor = leadingAnchor as? XAnchor
-            anchor!.type = .Leading
-        case .Trailing:
-            anchor = trailingAnchor as? XAnchor
-            anchor!.type = .Trailing
-        case .CenterX:
-            anchor = centerXAnchor as? XAnchor
-            anchor!.type = .CenterX
-        case .Height:
-            anchor = heightAnchor as? Dimension
-            anchor!.type = .Height
-        case .Width: 
-            anchor = widthAnchor as? Dimension
-            anchor!.type = .Width
-            
-        default:
-            anchor = nil
-        }
-        return anchor
+    public var left: Anchor {
+        return Anchor(view: self, attribute: .Left)
     }
     
-    public var leading: XAnchor {
-        get {
-            let anchor = self.leadingAnchor as! XAnchor
-            anchor.type = AnchorType.Leading
-            return anchor
-        }
+    public var right: Anchor {
+        return Anchor(view: self, attribute: .Right)
     }
     
-    public var trailing: XAnchor {
-        get {
-            let anchor = self.trailingAnchor as! XAnchor
-            anchor.type = AnchorType.Trailing
-            return anchor
-        }
+    public var top: Anchor {
+        return Anchor(view: self, attribute: .Top)
     }
     
-    public var centerX: XAnchor {
-        get {
-//            let anchor = XAnchor(self.centerXAnchor) 
-            let anchor = self.centerXAnchor as! XAnchor
-            anchor.type = AnchorType.CenterX
-            return anchor
-        }
+    public var bottom: Anchor {
+        return Anchor(view: self, attribute: .Bottom)
     }
     
-    public var top: YAnchor {
-        get {
-            let anchor = self.topAnchor as! YAnchor
-            anchor.type = AnchorType.Top
-            return anchor
-        }
+    public var leading: Anchor {
+        return Anchor(view: self, attribute: .Leading)
     }
     
-    public var bottom: YAnchor {
-        get {
-            let anchor = self.bottomAnchor as! YAnchor
-            anchor.type = AnchorType.Bottom
-            return anchor
-        }
+    public var trailing: Anchor {
+        return Anchor(view: self, attribute: .Trailing)
     }
     
-    public var centerY: YAnchor {
-        get {
-            let anchor = self.centerYAnchor as! YAnchor
-            anchor.type = AnchorType.CenterY
-            return anchor
-        }
-    }
-
-    public var height: Dimension {
-        get {
-            let anchor = self.heightAnchor as! Dimension
-            anchor.type = AnchorType.Height
-            return anchor
-        }
+    public var width: Anchor {
+        return Anchor(view: self, attribute: .Width)
     }
     
-    public var width: Dimension {
-        get {
-            let anchor = self.widthAnchor as! Dimension
-            anchor.type = AnchorType.Width
-            return anchor
-        }
+    public var height: Anchor {
+        return Anchor(view: self, attribute: .Height)
     }
+    
+    public var centerX: Anchor {
+        return Anchor(view: self, attribute: .CenterX)
+    }
+    
+    public var centerY: Anchor {
+        return Anchor(view: self, attribute: .CenterY)
+    }
+    
+    public var baseline: Anchor {
+        return Anchor(view: self, attribute: .Baseline)
+    }
+    
+    public var lastBaseline: Anchor {
+        return Anchor(view: self, attribute: .LastBaseline)
+    }
+    
+    public var firstBaseline: Anchor {
+        return Anchor(view: self, attribute: .FirstBaseline)
+    }
+    
+    public var leftMargin: Anchor {
+        return Anchor(view: self, attribute: .LeftMargin)
+    }
+    
+    public var rightMargin: Anchor {
+        return Anchor(view: self, attribute: .RightMargin)
+    }
+    
+    public var topMargin: Anchor {
+        return Anchor(view: self, attribute: .TopMargin)
+    }
+    
+    public var bottomMargin: Anchor {
+        return Anchor(view: self, attribute: .BottomMargin)
+    }
+    
+    public var leadingMargin: Anchor {
+        return Anchor(view: self, attribute: .LeadingMargin)
+    }
+    
+    public var trailingMargin: Anchor {
+        return Anchor(view: self, attribute: .TrailingMargin)
+    }    
+//    public var CenterXWithinMargins: Anchor {
+//        return Anchor(view: self, attribute: .CenterXWithinMargins)
+//    }
+//    
+//    public var CenterYWithinMargins: Anchor {
+//        return Anchor(view: self, attribute: .CenterYWithinMargins)
+//    }
 }
 
 

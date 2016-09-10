@@ -6,118 +6,45 @@
 //  Copyright © 2016 Magfurul Abeer. All rights reserved.
 //
 
+import UIKit
+
 public class Anchor {
     
     public var view: UIView
     public var attribute: NSLayoutAttribute = NSLayoutAttribute.NotAnAttribute
-    private var actualAnchor: NSLayoutAnchor
+    public var autoActivateConstraints = false
     
-    public var anchor: NSLayoutAnchor {
-        get {
-            return self.actualAnchor
-        }
-        set {
-            self.actualAnchor = newValue
-        }
-    }
-    
-    
-    
- 
-    
-    public init(view: UIView, anchor: NSLayoutAnchor, attribute: NSLayoutAttribute) {
-        self.actualAnchor = anchor
+    public init(view: UIView, attribute: NSLayoutAttribute) {
         self.attribute = attribute
         self.view = view
     }
-    
-   /* private func layoutClassForAttribute(layoutAttribute: NSLayoutAttribute) {
-        switch layoutAttribute {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        case .Left:
-            <#statement#>
-        case .Right:
-            <#statement#>
-        case .Top:
-            <#statement#>
-        case .Bottom:
-            <#statement#>
-        case .Leading:
-            <#statement#>
-        case .Trailing:
-            <#statement#>
-        case .Width:
-            <#statement#>
-        case .Height:
-            <#statement#>
-        case .CenterX:
-            <#statement#>
-        case .CenterY:
-            <#statement#>
-        case .Baseline:
-            <#statement#>
-        case .LastBaseline:
-            <#statement#>
-        case .FirstBaseline:
-            <#statement#>
-        case .LeftMargin:
-            <#statement#>
-        case .RightMargin:
-            <#statement#>
-        case .TopMargin: 
-            <#statement#>
-        case .BottomMargin: 
-            <#statement#>
-        case .LeadingMargin: 
-            <#statement#>
-        case .TrailingMargin: 
-            <#statement#>
-        case .CenterXWithinMargins: 
-            <#statement#>
-        case .CenterYWithinMargins: 
-            <#statement#>
-        case .NotAnAttribute: 
-            <#statement#>
-        }
-    }*/
-    
 }
 
-public class Constraint: NSLayoutConstraint {
-    
+/*
+
+
+public func + (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
+    firstModifier.attachedOperations.append(ConstraintFunction.AddConstant(secondModifier.value))
+    firstModifier.attachedOperations += secondModifier.attachedOperations
+    return firstModifier
 }
 
-//public class Dimension: Anchor {
-//    public override var anchor: NSLayoutDimension?
-//    
-//    public init(dimension: NSLayoutDimension, type: NSLayoutAttribute) {
-//        super.init()
-//        self.anchor = dimension
-//        self.type = type
-//    }
-//}
-//
-//public class XAnchor: Anchor {
-//    public var anchor: NSLayoutXAxisAnchor?
-//    
-//    public init(axis: NSLayoutXAxisAnchor, type: NSLayoutAttribute) {
-//        super.init()
-//        self.anchor = axis
-//        self.type = type
-//    }
-//}
-//
-//public class YAnchor: Anchor {
-//    public var anchor: NSLayoutYAxisAnchor?
-//    
-//    public init(axis: NSLayoutYAxisAnchor, type: NSLayoutAttribute) {
-//        super.init()
-//        self.anchor = axis
-//        self.type = type
-//    }
-//}
+public func - (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
+    firstModifier.attachedOperations.append(ConstraintFunction.SubtractConstant(secondModifier.value))
+    firstModifier.attachedOperations += secondModifier.attachedOperations
+    return firstModifier
+}
 
+public func * (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
+    firstModifier.attachedOperations.append(ConstraintFunction.MultiplyConstant(secondModifier.value))
+    firstModifier.attachedOperations += secondModifier.attachedOperations
+    return firstModifier
+}
 
+public func / (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
+    firstModifier.attachedOperations.append(ConstraintFunction.DivideConstant(secondModifier.value))
+    firstModifier.attachedOperations += secondModifier.attachedOperations
+    return firstModifier
+}
+
+*/
