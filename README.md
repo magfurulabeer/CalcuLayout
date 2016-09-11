@@ -18,5 +18,122 @@ button.width <> button.height * 2^ + 40^++
 
 ```
 
+## Documentation
 
+#### Making a new constraint
 
+###### Making a new constraint with an Equal Relation
+
+To make a constraint connecting two anchors or an anchor and a constant, you use the **<>** operator.
+```swift
+
+// Normal Way 
+button.widthAnchor.constraintEqualToAnchor(button.heightAnchor)
+
+// CalcuLayout Way
+button.width <> button.height
+
+```
+
+Alternatively, you can use the **==** operator.
+
+```swift
+
+// CalcuLayout way
+button.width == button.height
+
+```
+*Warning: This operator can cause confusion as == is normally used for comparison*
+
+###### Making a new constraint with an Greater Than Equal To/ Less Than Equal To Relation
+
+To make a constraint connecting two anchors or an anchor and a constant, you use the **<>** operator.
+```swift
+
+// Normal Way 
+button.widthAnchor.constraintGreaterThanOrEqualToAnchor(button.heightAnchor)
+button.widthAnchor.constraintLessThanOrEqualToAnchor(button.heightAnchor)
+
+// CalcuLayout Way
+button.width >> button.height
+button.width << button.width
+
+```
+
+Alternatively, you can use the **>=** and **<=** operator.
+
+```swift
+
+// CalcuLayout Way
+button.width >= button.height
+button.width <= button.width
+
+```
+*Warning: This operator can cause confusion as == is normally used for comparison*
+
+###### Making a new constraint equal to a constant
+
+To make a constraint connecting two anchors or an anchor and a constant, you use the **<>** operator.
+```swift
+
+// Normal Way 
+button.widthAnchor.equalToConstant(100)
+
+// CalcuLayout Way
+button.width <> 100^
+
+```
+
+#### Adding a constant to the constraint
+
+##### Converting a number into a Layout Modifier
+ 
+ To convert a number into a Layout Modifier, you simply use the postfix operator ^
+ 
+```swift
+
+100^
+
+```
+
+Alternatively, you can use the method C or M. Functionally they do the same thing but can make it easier to read.
+
+```swift
+
+100.C
+100.M
+
+```
+
+##### Applying the Layout Modifier
+
+Now to actually apply a Layout Constraint as a constant:
+
+```swift
+
+// Normal Way
+button.widthAnchor.constraintEqualToAnchor(button.heightAnchor, constant: 40.0)
+
+// CalcuLayout Way
+button.width <> button.height + 40^
+// or 
+// button.width <> button.height + 40.C
+
+```
+
+#### Adding a multiplier to the constraint
+
+Adding a multiplier is very similar to a constant
+
+```swift
+
+// Normal Way
+button.widthAnchor.constraintEqualToAnchor(button.heightAnchor, multiplier: 2.0)
+
+// CalcuLayout Way
+
+button.width <> button.height * 2^
+// or 
+// button.width <> button.height + 40.M
+
+```
