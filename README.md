@@ -47,7 +47,7 @@ button.width == button.height
 
 ###### Making a new constraint with an Greater Than Equal To/ Less Than Equal To Relation
 
-To make a constraint connecting two anchors or an anchor and a constant, you use the **<>** operator.
+To make a constraint connecting two anchors, you use the **<>** operator.
 ```swift
 
 // Normal Way 
@@ -69,7 +69,7 @@ button.width >= button.height
 button.width <= button.width
 
 ```
-*Warning: This operator can cause confusion as == is normally used for comparison*
+*Warning: This operator can cause confusion as >= and <= are normally used for comparison*
 
 ###### Making a new constraint equal to a constant
 
