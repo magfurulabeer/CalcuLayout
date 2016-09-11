@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculayout by magfurulabeer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Calculayout</h1>
+      <h2 class="project-tagline">CalcuLayout is a domain specific language to make iOS AutoLayout easy, intuitive, and look like simple math.</h2>
+      <a href="https://github.com/magfurulabeer/CalcuLayout" class="btn">View on GitHub</a>
+      <a href="https://github.com/magfurulabeer/CalcuLayout/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/magfurulabeer/CalcuLayout/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="basics" class="anchor" href="#basics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Basics</h1>
+
+<p>This is how constraints are added natively in Swift through Anchors:</p>
+
+<div class="highlight highlight-source-swift"><pre>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor, multiplier: <span class="pl-c1">2</span><span class="pl-k">.</span><span class="pl-c1">0</span>, constant: <span class="pl-c1">40</span><span class="pl-k">.</span><span class="pl-c1">0</span>)<span class="pl-k">.</span>active <span class="pl-k">=</span> <span class="pl-c1">true</span>
+</pre></div>
+
+<p>This is how constraints are added using CalcuLayout</p>
+
+<div class="highlight highlight-source-swift"><pre>
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height <span class="pl-k">*</span> <span class="pl-c1">2</span><span class="pl-k">^</span> <span class="pl-k">+</span> <span class="pl-c1">40</span>^++
+</pre></div>
+
+<p><br></p>
+
+<h1>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h1>
+
+<h3>
+<a id="making-a-new-constraint" class="anchor" href="#making-a-new-constraint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making a new constraint</h3>
+
+<h5>
+<a id="making-a-new-constraint-with-an-equal-relation" class="anchor" href="#making-a-new-constraint-with-an-equal-relation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making a new constraint with an Equal Relation</h5>
+
+<p>To make a constraint connecting two anchors or an anchor and a constant, you use the <strong>&lt;&gt;</strong> operator.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal Way </span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor)
+
+<span class="pl-c">// CalcuLayout Way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height
+</pre></div>
+
+<p>Alternatively, you can use the <strong>==</strong> operator.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// CalcuLayout way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">==</span> button<span class="pl-k">.</span>height
+</pre></div>
+
+<h6>
+<a id="warning-this-operator-can-cause-confusion-as--is-normally-used-for-comparison" class="anchor" href="#warning-this-operator-can-cause-confusion-as--is-normally-used-for-comparison" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Warning: This operator can cause confusion as == is normally used for comparison</em>
+</h6>
+
+<h5>
+<a id="making-a-new-constraint-with-an-greater-than-equal-to-less-than-equal-to-relation" class="anchor" href="#making-a-new-constraint-with-an-greater-than-equal-to-less-than-equal-to-relation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making a new constraint with an Greater Than Equal To/ Less Than Equal To Relation</h5>
+
+<p>To make a constraint connecting two anchors, you use the <strong>&lt;&gt;</strong> operator.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal Way </span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintGreaterThanOrEqualToAnchor(button<span class="pl-k">.</span>heightAnchor)
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintLessThanOrEqualToAnchor(button<span class="pl-k">.</span>heightAnchor)
+
+<span class="pl-c">// CalcuLayout Way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">&gt;&gt;</span> button<span class="pl-k">.</span>height
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&lt;</span> button<span class="pl-k">.</span>width
+</pre></div>
+
+<p>Alternatively, you can use the <strong>&gt;=</strong> and <strong>&lt;=</strong> operator.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// CalcuLayout Way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">&gt;=</span> button<span class="pl-k">.</span>height
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;=</span> button<span class="pl-k">.</span>width
+</pre></div>
+
+<h6>
+<a id="warning-this-operator-can-cause-confusion-as--and--are-normally-used-for-comparison" class="anchor" href="#warning-this-operator-can-cause-confusion-as--and--are-normally-used-for-comparison" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Warning: This operator can cause confusion as &gt;= and &lt;= are normally used for comparison</em>
+</h6>
+
+<h5>
+<a id="making-a-new-constraint-equal-to-a-constant" class="anchor" href="#making-a-new-constraint-equal-to-a-constant" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making a new constraint equal to a constant</h5>
+
+<p>To make a constraint connecting two anchors or an anchor and a constant, you use the <strong>&lt;&gt;</strong> operator.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal Way </span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>equalToConstant(<span class="pl-c1">100</span>)
+
+<span class="pl-c">// CalcuLayout Way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> <span class="pl-c1">100</span><span class="pl-k">^</span>
+</pre></div>
+
+<p><br></p>
+
+<h3>
+<a id="adding-a-constant-to-the-constraint" class="anchor" href="#adding-a-constant-to-the-constraint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding a constant to the constraint</h3>
+
+<h4>
+<a id="converting-a-number-into-a-layout-modifier" class="anchor" href="#converting-a-number-into-a-layout-modifier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Converting a number into a Layout Modifier</h4>
+
+<p>To convert a number into a Layout Modifier, you simply use the postfix operator ^</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c1">100</span><span class="pl-k">^</span>
+</pre></div>
+
+<p>Alternatively, you can use the method C or M. Functionally they do the same thing but can make it easier to read.</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c1">100</span><span class="pl-k">.</span>C
+<span class="pl-c1">100</span><span class="pl-k">.</span>M
+</pre></div>
+
+<h4>
+<a id="applying-the-layout-modifier" class="anchor" href="#applying-the-layout-modifier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Applying the Layout Modifier</h4>
+
+<p>Now to actually apply a Layout Constraint as a constant:</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal Way</span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor, constant: <span class="pl-c1">40</span><span class="pl-k">.</span><span class="pl-c1">0</span>)
+
+<span class="pl-c">// CalcuLayout Way</span>
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height <span class="pl-k">+</span> <span class="pl-c1">40</span><span class="pl-k">^</span>
+<span class="pl-c">// or </span>
+<span class="pl-c">// button.width &lt;&gt; button.height + 40.C</span>
+</pre></div>
+
+<p><br></p>
+
+<h3>
+<a id="adding-a-multiplier-to-the-constraint" class="anchor" href="#adding-a-multiplier-to-the-constraint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding a multiplier to the constraint</h3>
+
+<p>Adding a multiplier is very similar to a constant</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal Way</span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor, multiplier: <span class="pl-c1">2</span><span class="pl-k">.</span><span class="pl-c1">0</span>)
+
+<span class="pl-c">// CalcuLayout Way</span>
+
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height <span class="pl-k">*</span> <span class="pl-c1">2</span><span class="pl-k">^</span>
+<span class="pl-c">// or </span>
+<span class="pl-c">// button.width &lt;&gt; button.height + 40.M</span>
+</pre></div>
+
+<p><br></p>
+
+<h3>
+<a id="activating-a-constraint" class="anchor" href="#activating-a-constraint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Activating a Constraint</h3>
+
+<p>Normally, you activate a constraint by setting it's <em>active</em> property to <em>true</em>
+With CalcuLayout, you activate a constraint by using the ++ at the end of the constraint's expression</p>
+
+<div class="highlight highlight-source-swift"><pre>
+<span class="pl-c">// Normal One Liner Way</span>
+button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor, constant: <span class="pl-c1">50</span><span class="pl-k">.</span><span class="pl-c1">0</span>, multiplier: <span class="pl-c1">2</span><span class="pl-k">.</span><span class="pl-c1">0</span>)<span class="pl-k">.</span>active <span class="pl-k">=</span> <span class="pl-c1">true</span>
+
+<span class="pl-c">// CalcuLayout One Liner Way</span>
+
+button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height <span class="pl-k">+</span> <span class="pl-c1">50</span><span class="pl-k">^</span> <span class="pl-k">*</span> <span class="pl-c1">2</span>^++
+
+
+<span class="pl-c">// Normal Two Liner Way</span>
+<span class="pl-k">let</span> constraint <span class="pl-k">=</span> button<span class="pl-k">.</span>widthAnchor<span class="pl-k">.</span>constraintEqualToAnchor(button<span class="pl-k">.</span>heightAnchor, constant: <span class="pl-c1">50</span><span class="pl-k">.</span><span class="pl-c1">0</span>, multiplier: <span class="pl-c1">2</span><span class="pl-k">.</span><span class="pl-c1">0</span>)
+constraint<span class="pl-k">.</span>active <span class="pl-k">=</span> <span class="pl-c1">true</span>
+
+<span class="pl-c">// CalcuLayout Two Liner Way</span>
+
+<span class="pl-k">let</span> constraint <span class="pl-k">=</span> button<span class="pl-k">.</span>width <span class="pl-k">&lt;&gt;</span> button<span class="pl-k">.</span>height <span class="pl-k">+</span> <span class="pl-c1">50</span><span class="pl-k">^</span> <span class="pl-k">*</span> <span class="pl-c1">2</span><span class="pl-k">^</span>
+constraint<span class="pl-k">++</span>
+</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/magfurulabeer/CalcuLayout">Calculayout</a> is maintained by <a href="https://github.com/magfurulabeer">magfurulabeer</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
