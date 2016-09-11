@@ -15,7 +15,6 @@ public extension NSLayoutConstraint {
         for function in operations {
             switch function {
             case .AddConstant(let constant):
-                // How to get saved float?
                 modifiedConstraint + constant^
                 break
             case .SubtractConstant(let constant):
@@ -31,10 +30,8 @@ public extension NSLayoutConstraint {
                 modifiedConstraint.active = isActive
                 break
             }
-            
         }
-//        var view = self.firstItem as? UIView
-//        view?.layoutIfNeeded()
+        
         return modifiedConstraint
     }
 }

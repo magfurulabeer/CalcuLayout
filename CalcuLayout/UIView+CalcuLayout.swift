@@ -84,14 +84,15 @@ public extension UIView {
     
     public var trailingMargin: Anchor {
         return Anchor(view: self, attribute: .TrailingMargin)
-    }    
-//    public var CenterXWithinMargins: Anchor {
-//        return Anchor(view: self, attribute: .CenterXWithinMargins)
-//    }
-//    
-//    public var CenterYWithinMargins: Anchor {
-//        return Anchor(view: self, attribute: .CenterYWithinMargins)
-//    }
+    }
+    
+    public var CenterXWithinMargins: Anchor {
+        return Anchor(view: self, attribute: .CenterXWithinMargins)
+    }
+    
+    public var CenterYWithinMargins: Anchor {
+        return Anchor(view: self, attribute: .CenterYWithinMargins)
+    }
 }
 
 

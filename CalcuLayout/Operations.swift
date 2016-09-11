@@ -208,7 +208,7 @@ public postfix func ++ (anchor: Anchor) -> Anchor {
 }
 
 public postfix func ++ (modifier: LayoutModifier) -> LayoutModifier {
-    var mod = modifier
+    let mod = modifier
     mod.attachedOperations.append(ConstraintFunction.ActivateConstraint(true))
     return mod
 }
@@ -224,7 +224,7 @@ public postfix func -- (anchor: Anchor) -> Anchor {
 }
 
 public postfix func -- (modifier: LayoutModifier) -> LayoutModifier {
-    var mod = modifier
+    let mod = modifier
     mod.attachedOperations.append(ConstraintFunction.ActivateConstraint(false))
     return mod
 }

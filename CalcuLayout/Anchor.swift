@@ -9,7 +9,6 @@
 import UIKit
 
 public class Anchor {
-    
     public var view: UIView
     public var attribute: NSLayoutAttribute = NSLayoutAttribute.NotAnAttribute
     public var autoActivateConstraints = false
@@ -19,32 +18,3 @@ public class Anchor {
         self.view = view
     }
 }
-
-/*
-
-
-public func + (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    firstModifier.attachedOperations.append(ConstraintFunction.AddConstant(secondModifier.value))
-    firstModifier.attachedOperations += secondModifier.attachedOperations
-    return firstModifier
-}
-
-public func - (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    firstModifier.attachedOperations.append(ConstraintFunction.SubtractConstant(secondModifier.value))
-    firstModifier.attachedOperations += secondModifier.attachedOperations
-    return firstModifier
-}
-
-public func * (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    firstModifier.attachedOperations.append(ConstraintFunction.MultiplyConstant(secondModifier.value))
-    firstModifier.attachedOperations += secondModifier.attachedOperations
-    return firstModifier
-}
-
-public func / (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    firstModifier.attachedOperations.append(ConstraintFunction.DivideConstant(secondModifier.value))
-    firstModifier.attachedOperations += secondModifier.attachedOperations
-    return firstModifier
-}
-
-*/

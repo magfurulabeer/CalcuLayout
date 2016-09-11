@@ -10,11 +10,11 @@
 		8B033C261D82A367000D561A /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B033C251D82A367000D561A /* Anchor.swift */; };
 		8B51D5431D82A08900167C5F /* CalcuLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B51D5421D82A08900167C5F /* CalcuLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B51D54B1D82A16400167C5F /* UIView+CalcuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */; };
+		8BCC36C61D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC36C51D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift */; };
+		8BCC36C81D852EA000875A28 /* LayoutModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC36C71D852EA000875A28 /* LayoutModifier.swift */; };
+		8BCC36CA1D852EAC00875A28 /* Enum-ConstraintFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCC36C91D852EAC00875A28 /* Enum-ConstraintFunctions.swift */; };
 		8BCD2F961D82CD050048D3B4 /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCD2F951D82CD050048D3B4 /* Operations.swift */; };
 		8BE6D1121D82EB95006EB419 /* Float+CalcuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6D1111D82EB95006EB419 /* Float+CalcuLayout.swift */; };
-		8BE6D1141D839838006EB419 /* NSLayoutConstraint+CalcuLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6D1131D839838006EB419 /* NSLayoutConstraint+CalcuLayout.swift */; };
-		8BE6D1161D8398C2006EB419 /* LayoutModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6D1151D8398C2006EB419 /* LayoutModifier.swift */; };
-		8BE6D1181D8398F2006EB419 /* Enum-ConstraintFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE6D1171D8398F2006EB419 /* Enum-ConstraintFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +23,11 @@
 		8B51D5421D82A08900167C5F /* CalcuLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalcuLayout.h; sourceTree = "<group>"; };
 		8B51D5441D82A08900167C5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CalcuLayout.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8BCC36C51D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+CalcuLayout.swift"; sourceTree = "<group>"; };
+		8BCC36C71D852EA000875A28 /* LayoutModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutModifier.swift; sourceTree = "<group>"; };
+		8BCC36C91D852EAC00875A28 /* Enum-ConstraintFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Enum-ConstraintFunctions.swift"; sourceTree = "<group>"; };
 		8BCD2F951D82CD050048D3B4 /* Operations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
 		8BE6D1111D82EB95006EB419 /* Float+CalcuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+CalcuLayout.swift"; sourceTree = "<group>"; };
-		8BE6D1131D839838006EB419 /* NSLayoutConstraint+CalcuLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+CalcuLayout.swift"; path = "../NSLayoutConstraint+CalcuLayout.swift"; sourceTree = "<group>"; };
-		8BE6D1151D8398C2006EB419 /* LayoutModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutModifier.swift; path = ../LayoutModifier.swift; sourceTree = "<group>"; };
-		8BE6D1171D8398F2006EB419 /* Enum-ConstraintFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Enum-ConstraintFunctions.swift"; path = "../Enum-ConstraintFunctions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +65,11 @@
 				8B51D5441D82A08900167C5F /* Info.plist */,
 				8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */,
 				8BE6D1111D82EB95006EB419 /* Float+CalcuLayout.swift */,
-				8BE6D1131D839838006EB419 /* NSLayoutConstraint+CalcuLayout.swift */,
+				8BCC36C51D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift */,
+				8BCC36C71D852EA000875A28 /* LayoutModifier.swift */,
 				8B033C251D82A367000D561A /* Anchor.swift */,
-				8BE6D1151D8398C2006EB419 /* LayoutModifier.swift */,
-				8BE6D1171D8398F2006EB419 /* Enum-ConstraintFunctions.swift */,
 				8BCD2F951D82CD050048D3B4 /* Operations.swift */,
+				8BCC36C91D852EAC00875A28 /* Enum-ConstraintFunctions.swift */,
 			);
 			path = CalcuLayout;
 			sourceTree = "<group>";
@@ -155,9 +155,9 @@
 				8BCD2F961D82CD050048D3B4 /* Operations.swift in Sources */,
 				8BE6D1121D82EB95006EB419 /* Float+CalcuLayout.swift in Sources */,
 				8B033C261D82A367000D561A /* Anchor.swift in Sources */,
-				8BE6D1141D839838006EB419 /* NSLayoutConstraint+CalcuLayout.swift in Sources */,
-				8BE6D1181D8398F2006EB419 /* Enum-ConstraintFunctions.swift in Sources */,
-				8BE6D1161D8398C2006EB419 /* LayoutModifier.swift in Sources */,
+				8BCC36C61D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift in Sources */,
+				8BCC36CA1D852EAC00875A28 /* Enum-ConstraintFunctions.swift in Sources */,
+				8BCC36C81D852EA000875A28 /* LayoutModifier.swift in Sources */,
 				8B51D54B1D82A16400167C5F /* UIView+CalcuLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
