@@ -84,6 +84,8 @@ button.width <> 100^
 
 ```
 
+<br>
+
 #### Adding a constant to the constraint
 
 ##### Converting a number into a Layout Modifier
@@ -121,6 +123,8 @@ button.width <> button.height + 40^
 
 ```
 
+<br>
+
 #### Adding a multiplier to the constraint
 
 Adding a multiplier is very similar to a constant
@@ -135,5 +139,33 @@ button.widthAnchor.constraintEqualToAnchor(button.heightAnchor, multiplier: 2.0)
 button.width <> button.height * 2^
 // or 
 // button.width <> button.height + 40.M
+
+```
+
+<br>
+
+#### Activating a Constraint
+
+Normally, you activate a constraint by setting it's *active* property to *true*
+With CalcuLayout, you activate a constraint by using the ++ at the end of the constraint's expression
+
+```swift
+
+// Normal One Liner Way
+button.widthAnchor.constraintEqualToAnchor(button.heightAnchor, constant: 50.0, multiplier: 2.0).active = true
+
+// CalcuLayout One Liner Way
+
+button.width <> button.height + 50^ * 2^++
+
+
+// Normal Two Liner Way
+let constraint = button.widthAnchor.constraintEqualToAnchor(button.heightAnchor, constant: 50.0, multiplier: 2.0)
+constraint.active = true
+
+// CalcuLayout Two Liner Way
+
+let constraint = button.width <> button.height + 50^ * 2^
+constraint++
 
 ```
