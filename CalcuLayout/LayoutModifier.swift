@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class LayoutModifier {
-    public var value: Float
-    public var attachedOperations = [ConstraintFunction]()
+open class LayoutModifier {
+    open var value: Float
+    open var attachedOperations = [ConstraintFunction]()
     
     init(value: Float) {
         self.value = value

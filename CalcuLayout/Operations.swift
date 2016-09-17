@@ -11,26 +11,31 @@ import UIKit
 // MARK: Declarations
 
 // Setting Postfix Operators
-postfix operator ^ {}
-postfix operator ^++ {}
-postfix operator ^-- {}
+postfix operator ^
+postfix operator ^++
+postfix operator ^--
 
+precedencegroup ConstraintPrecedence {
+    associativity: left
+    higherThan: AssignmentPrecedence
+}
 // Setting Constraint Operators
-infix operator <> {associativity left precedence 150}
-infix operator >> {associativity left precedence 150}
-infix operator << {associativity left precedence 150}
+infix operator <> : ConstraintPrecedence
+infix operator >> : ConstraintPrecedence
+infix operator << : ConstraintPrecedence
+
 
 // MARK: Operators
 
 public func += (view: UIView, anchor: Anchor) -> NSLayoutConstraint {
     let constraint = NSLayoutConstraint(item: view,
                                         attribute: anchor.attribute,
-                                        relatedBy: .Equal,
+                                        relatedBy: .equal,
                                         toItem: anchor.view,
                                         attribute: anchor.attribute,
                                         multiplier: 1,
                                         constant: 0)
-    constraint.active = true
+    constraint.isActive = true
     return constraint
 }
 
@@ -52,12 +57,12 @@ public func == (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     firstAnchor.view.translatesAutoresizingMaskIntoConstraints = false
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
                                         attribute: firstAnchor.attribute,
-                                        relatedBy: .Equal,
+                                        relatedBy: .equal,
                                         toItem: secondAnchor.view,
                                         attribute: secondAnchor.attribute,
                                         multiplier: 1,
                                         constant: 0)
-    constraint.active = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
+    constraint.isActive = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
     return constraint
 }
 
@@ -69,9 +74,9 @@ public func == (firstAnchor: Anchor, constant: LayoutModifier) -> NSLayoutConstr
     firstAnchor.view.translatesAutoresizingMaskIntoConstraints = false
     var constraint = NSLayoutConstraint(item: firstAnchor.view,
                                         attribute: firstAnchor.attribute,
-                                        relatedBy: .Equal,
+                                        relatedBy: .equal,
                                         toItem: nil,
-                                        attribute: NSLayoutAttribute.NotAnAttribute,
+                                        attribute: NSLayoutAttribute.notAnAttribute,
                                         multiplier: 1,
                                         constant: CGFloat(constant.value))
     constraint = constraint.runAttachedOperations(constant.attachedOperations)
@@ -86,12 +91,12 @@ public func >= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
                                         attribute: firstAnchor.attribute,
-                                        relatedBy: .GreaterThanOrEqual,
+                                        relatedBy: .greaterThanOrEqual,
                                         toItem: secondAnchor.view,
                                         attribute: secondAnchor.attribute,
                                         multiplier: 1,
                                         constant: 0)
-    constraint.active = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
+    constraint.isActive = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
     return constraint
 }
 
@@ -104,12 +109,12 @@ public func <= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
                                         attribute: firstAnchor.attribute,
-                                        relatedBy: .LessThanOrEqual,
+                                        relatedBy: .lessThanOrEqual,
                                         toItem: secondAnchor.view,
                                         attribute: secondAnchor.attribute,
                                         multiplier: 1,
                                         constant: 0)
-    constraint.active = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
+    constraint.isActive = (firstAnchor.autoActivateConstraints || secondAnchor.autoActivateConstraints) ? true: false
     return constraint
 }
 
@@ -168,25 +173,25 @@ public func / (constraint: NSLayoutConstraint, multiplier: LayoutModifier) -> NS
 }
 
 public func + (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.AddConstant(secondModifier.value))
+    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.addConstant(secondModifier.value))
 
 }
 
 public func - (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.SubtractConstant(secondModifier.value))
+    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.subtractConstant(secondModifier.value))
 
 }
 
 public func * (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.MultiplyConstant(secondModifier.value))
+    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.multiplyConstant(secondModifier.value))
 
 }
 
 public func / (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
-    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.DivideConstant(secondModifier.value))
+    return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.divideConstant(secondModifier.value))
 }
 
-private func operation(firstModifier: LayoutModifier, secondModifier: LayoutModifier, function: ConstraintFunction) -> LayoutModifier {
+private func operation(_ firstModifier: LayoutModifier, secondModifier: LayoutModifier, function: ConstraintFunction) -> LayoutModifier {
     firstModifier.attachedOperations.append(function)
     firstModifier.attachedOperations += secondModifier.attachedOperations
     return firstModifier
@@ -198,7 +203,7 @@ private func operation(firstModifier: LayoutModifier, secondModifier: LayoutModi
 
 
 public postfix func ++ (constraint: NSLayoutConstraint) {
-    constraint.active = true
+    constraint.isActive = true
 }
 
 public postfix func ++ (anchor: Anchor) -> Anchor {
@@ -209,12 +214,12 @@ public postfix func ++ (anchor: Anchor) -> Anchor {
 
 public postfix func ++ (modifier: LayoutModifier) -> LayoutModifier {
     let mod = modifier
-    mod.attachedOperations.append(ConstraintFunction.ActivateConstraint(true))
+    mod.attachedOperations.append(ConstraintFunction.activateConstraint(true))
     return mod
 }
 
 public postfix func -- (constraint: NSLayoutConstraint) {
-    constraint.active = false
+    constraint.isActive = false
 }
 
 public postfix func -- (anchor: Anchor) -> Anchor {
@@ -225,7 +230,7 @@ public postfix func -- (anchor: Anchor) -> Anchor {
 
 public postfix func -- (modifier: LayoutModifier) -> LayoutModifier {
     let mod = modifier
-    mod.attachedOperations.append(ConstraintFunction.ActivateConstraint(false))
+    mod.attachedOperations.append(ConstraintFunction.activateConstraint(false))
     return mod
 }
 

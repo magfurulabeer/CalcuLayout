@@ -9,25 +9,25 @@
 import Foundation
 
 public extension NSLayoutConstraint {
-    internal func runAttachedOperations(operations: [ConstraintFunction]) -> NSLayoutConstraint {
-        let modifiedConstraint = self
+    internal func runAttachedOperations(_ operations: [ConstraintFunction]) -> NSLayoutConstraint {
+        var modifiedConstraint = NSLayoutConstraint()
         
         for function in operations {
             switch function {
-            case .AddConstant(let constant):
-                modifiedConstraint + constant^
+            case .addConstant(let constant):
+                modifiedConstraint = self + constant^
                 break
-            case .SubtractConstant(let constant):
-                modifiedConstraint - constant^
+            case .subtractConstant(let constant):
+                modifiedConstraint = self - constant^
                 break
-            case .MultiplyConstant(let constant):
-                modifiedConstraint * constant^
+            case .multiplyConstant(let constant):
+                modifiedConstraint = self * constant^
                 break
-            case .DivideConstant(let constant):
-                modifiedConstraint / constant^
+            case .divideConstant(let constant):
+                modifiedConstraint = self / constant^
                 break
-            case .ActivateConstraint(let isActive):
-                modifiedConstraint.active = isActive
+            case .activateConstraint(let isActive):
+                self.isActive = isActive
                 break
             }
         }

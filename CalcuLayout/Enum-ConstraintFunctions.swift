@@ -9,9 +9,9 @@
 import Foundation
 
 public enum ConstraintFunction {
-    case AddConstant (Float)
-    case SubtractConstant (Float)
-    case MultiplyConstant (Float)
-    case DivideConstant (Float)
-    case ActivateConstraint (Bool)
+    case addConstant (Float)
+    case subtractConstant (Float)
+    case multiplyConstant (Float)
+    case divideConstant (Float)
+    case activateConstraint (Bool)
 }

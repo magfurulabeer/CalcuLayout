@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class Anchor {
-    public var view: UIView
-    public var attribute: NSLayoutAttribute = NSLayoutAttribute.NotAnAttribute
-    public var autoActivateConstraints = false
+open class Anchor {
+    open var view: UIView
+    open var attribute: NSLayoutAttribute = NSLayoutAttribute.notAnAttribute
+    open var autoActivateConstraints = false
     
     public init(view: UIView, attribute: NSLayoutAttribute) {
         self.attribute = attribute
