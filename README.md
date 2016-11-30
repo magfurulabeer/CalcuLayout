@@ -6,7 +6,6 @@ Due to upgrading to Swift 3, certain parts of the framework are bugged. If you k
 Current issues include:
 * Adjacent operators are in unordered precedence groups 'ConstraintPrecedence' and 'AdditionPrecedence'
   - ConstraintPrecedence is declared with higherThan precedence set to BitwiseShiftPrecedence!
-* 
 
 
 ## Basics
