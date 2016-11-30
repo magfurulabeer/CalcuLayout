@@ -62,19 +62,59 @@
 		8B51D5411D82A08900167C5F /* CalcuLayout */ = {
 			isa = PBXGroup;
 			children = (
-				8B51D5421D82A08900167C5F /* CalcuLayout.h */,
+				8BC3FD301DEF8700009163EB /* Enums */,
+				8BC3FD2D1DEF86CF009163EB /* Extensions */,
+				8BC3FD311DEF870E009163EB /* Supporting Files */,
 				8B51D5401D82A08900167C5F /* Products */,
-				8B51D5441D82A08900167C5F /* Info.plist */,
+				8BC3FD2E1DEF86E3009163EB /* Operations */,
+				8BC3FD2F1DEF86F4009163EB /* Wrappers */,
+			);
+			path = CalcuLayout;
+			sourceTree = "<group>";
+		};
+		8BC3FD2D1DEF86CF009163EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				8B51D54A1D82A16400167C5F /* UIView+CalcuLayout.swift */,
 				8BE6D1111D82EB95006EB419 /* Float+CalcuLayout.swift */,
 				8BCC36C51D852E9600875A28 /* NSLayoutConstraint+CalcuLayout.swift */,
-				8BCC36C71D852EA000875A28 /* LayoutModifier.swift */,
-				8B033C251D82A367000D561A /* Anchor.swift */,
-				8BCC36C91D852EAC00875A28 /* Enum-ConstraintFunctions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		8BC3FD2E1DEF86E3009163EB /* Operations */ = {
+			isa = PBXGroup;
+			children = (
 				8BC3FD291DEF7D1B009163EB /* PostfixOperations.swift */,
 				8BC3FD2B1DEF7DD2009163EB /* InfixOperations.swift */,
 			);
-			path = CalcuLayout;
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		8BC3FD2F1DEF86F4009163EB /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				8BCC36C71D852EA000875A28 /* LayoutModifier.swift */,
+				8B033C251D82A367000D561A /* Anchor.swift */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
+		8BC3FD301DEF8700009163EB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8BCC36C91D852EAC00875A28 /* Enum-ConstraintFunctions.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		8BC3FD311DEF870E009163EB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B51D5441D82A08900167C5F /* Info.plist */,
+				8B51D5421D82A08900167C5F /* CalcuLayout.h */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
