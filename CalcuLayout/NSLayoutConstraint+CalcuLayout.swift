@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// This extension allows for all the attached LayoutModifiers to affect the NSLayoutConstraint.
 public extension NSLayoutConstraint {
+    
+    /// All the attached LayoutModifiers will affect the NSLayoutConstraint.
     internal func runAttachedOperations(_ operations: [ConstraintFunction]) -> NSLayoutConstraint {
         var modifiedConstraint = NSLayoutConstraint()
         

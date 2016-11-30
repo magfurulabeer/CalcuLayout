@@ -1,31 +1,38 @@
 //
-//  Operations.swift
+//  InfixOperations.swift
 //  CalcuLayout
 //
-//  Created by Magfurul Abeer on 9/9/16.
+//  Created by Magfurul Abeer on 11/30/16.
 //  Copyright © 2016 Magfurul Abeer. All rights reserved.
 //
 
 import UIKit
 
-// MARK: Declarations
+// TODO: Add >= and <= Anchor to Modifiers
+// TODO: Add ^ for Doubles and Ints
 
-// Setting Postfix Operators
-postfix operator ^
-postfix operator ^++
-postfix operator ^--
+
+// MARK: Declarations
 
 precedencegroup ConstraintPrecedence {
     associativity: left
     higherThan: AssignmentPrecedence
 }
-// Setting Constraint Operators
+
+/// Practically equivalent to constraintEqualToAnchor.
 infix operator <> : ConstraintPrecedence
+
+/// Practically equivalent to constraintGreaterThanOrEqualToAnchor.
 infix operator >> : ConstraintPrecedence
+
+/// Practically equivalent to constraintLessThanOrEqualToAnchor.
 infix operator << : ConstraintPrecedence
 
 
+
 // MARK: Operators
+
+
 
 public func += (view: UIView, anchor: Anchor) -> NSLayoutConstraint {
     let constraint = NSLayoutConstraint(item: view,
@@ -49,10 +56,12 @@ public func += (view: UIView, anchors: [Anchor]) -> [NSLayoutConstraint] {
 }
 
 
-// MARK: Anchor Operators
-// TODO: Add >= and <= Anchor to Modifiers
-// TODO: Add ^ for Doubles and Ints
 
+// MARK: Anchor Operators
+
+
+
+/// Practically equivalent to constraintEqualToAnchor. Discouraged to use this due to == usually being used for comparison.
 public func == (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     firstAnchor.view.translatesAutoresizingMaskIntoConstraints = false
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
@@ -66,10 +75,12 @@ public func == (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     return constraint
 }
 
+/// Practically equivalent to constraintEqualToAnchor
 public func <> (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     return firstAnchor == secondAnchor
 }
 
+/// Practically equivalent to constraintEqualToAnchor. Discouraged to use this due to == usually being used for comparison.
 public func == (firstAnchor: Anchor, constant: LayoutModifier) -> NSLayoutConstraint {
     firstAnchor.view.translatesAutoresizingMaskIntoConstraints = false
     var constraint = NSLayoutConstraint(item: firstAnchor.view,
@@ -83,10 +94,12 @@ public func == (firstAnchor: Anchor, constant: LayoutModifier) -> NSLayoutConstr
     return constraint
 }
 
+/// Practically equivalent to constraintEqualToAnchor.
 public func <> (firstAnchor: Anchor, constant: LayoutModifier) -> NSLayoutConstraint {
     return firstAnchor == constant
 }
 
+/// Practically equivalent to constraintGreaterThanOrEqualToAnchor. Discouraged to use this due to >= usually being used for comparison.
 public func >= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
@@ -100,11 +113,13 @@ public func >= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     return constraint
 }
 
+/// Practically equivalent to constraintGreaterThanOrEqualToAnchor.
 public func >> (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     
     return firstAnchor >= secondAnchor
 }
 
+/// Practically equivalent to constraintLessThanOrEqualToAnchor. Discouraged to use this due to <= usually being used for comparison.
 public func <= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     
     let constraint = NSLayoutConstraint(item: firstAnchor.view,
@@ -118,12 +133,18 @@ public func <= (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint
     return constraint
 }
 
+/// Practically equivalent to constraintLessThanOrEqualToAnchor.
 public func << (firstAnchor: Anchor, secondAnchor: Anchor) -> NSLayoutConstraint {
     return firstAnchor <= secondAnchor
 }
 
-// MARK: NSLayoutConstraint Operators
 
+
+// MARK: NSLayoutConstraint-LayoutModifier Operators
+
+
+
+/// Adds LayoutModifier to NSLayoutConstraints constant value. Also adds all other attached LayoutModifiers and Activators.
 public func + (constraint: NSLayoutConstraint, constant: LayoutModifier) -> NSLayoutConstraint {
     var newConstraint = NSLayoutConstraint(item: constraint.firstItem,
                                            attribute: constraint.firstAttribute,
@@ -136,6 +157,7 @@ public func + (constraint: NSLayoutConstraint, constant: LayoutModifier) -> NSLa
     return newConstraint
 }
 
+/// Subtracts LayoutModifier from NSLayoutConstraints constant value. Also adds all other attached LayoutModifiers and Activators.
 public func - (constraint: NSLayoutConstraint, constant: LayoutModifier) -> NSLayoutConstraint {
     var newConstraint = NSLayoutConstraint(item: constraint.firstItem,
                                            attribute: constraint.firstAttribute,
@@ -148,6 +170,7 @@ public func - (constraint: NSLayoutConstraint, constant: LayoutModifier) -> NSLa
     return newConstraint
 }
 
+/// Multiplies NSLayoutConstraints multiplier by LayoutModifier value. Also adds all other attached LayoutModifiers and Activators.
 public func * (constraint: NSLayoutConstraint, multiplier: LayoutModifier) -> NSLayoutConstraint {
     var newConstraint = NSLayoutConstraint(item: constraint.firstItem,
                                            attribute: constraint.firstAttribute,
@@ -160,6 +183,7 @@ public func * (constraint: NSLayoutConstraint, multiplier: LayoutModifier) -> NS
     return newConstraint
 }
 
+/// Divides NSLayoutConstraints multiplier by LayoutModifier value. Also adds all other attached LayoutModifiers and Activators.
 public func / (constraint: NSLayoutConstraint, multiplier: LayoutModifier) -> NSLayoutConstraint {
     var newConstraint = NSLayoutConstraint(item: constraint.firstItem,
                                            attribute: constraint.firstAttribute,
@@ -172,120 +196,37 @@ public func / (constraint: NSLayoutConstraint, multiplier: LayoutModifier) -> NS
     return newConstraint
 }
 
+
+
+// MARK: LayoutModifier-LayoutModifier Operators
+
+
+/// Stores second LayoutModifer(as an addConstant) and attached operations in First Modifier
 public func + (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
     return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.addConstant(secondModifier.value))
-
+    
 }
 
+/// Stores second LayoutModifer(as an subtractConstant) and attached operations in First Modifier
 public func - (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
     return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.subtractConstant(secondModifier.value))
-
+    
 }
 
+/// Stores second LayoutModifer(as an multiplyConstant) and attached operations in First Modifier
 public func * (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
     return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.multiplyConstant(secondModifier.value))
-
+    
 }
 
+/// Stores second LayoutModifer(as an divideConstant) and attached operations in First Modifier
 public func / (firstModifier: LayoutModifier, secondModifier: LayoutModifier) -> LayoutModifier {
     return operation(firstModifier, secondModifier: secondModifier, function: ConstraintFunction.divideConstant(secondModifier.value))
 }
 
+/// Adds appropriate Operation to firstModifier.
 private func operation(_ firstModifier: LayoutModifier, secondModifier: LayoutModifier, function: ConstraintFunction) -> LayoutModifier {
     firstModifier.attachedOperations.append(function)
     firstModifier.attachedOperations += secondModifier.attachedOperations
     return firstModifier
 }
-
-
-
-//MARK: POSTFIX OPERATIONS
-
-
-public postfix func ++ (constraint: NSLayoutConstraint) {
-    constraint.isActive = true
-}
-
-public postfix func ++ (anchor: Anchor) -> Anchor {
-    let activatedAnchor = anchor
-    activatedAnchor.autoActivateConstraints = true
-    return activatedAnchor
-}
-
-public postfix func ++ (modifier: LayoutModifier) -> LayoutModifier {
-    let mod = modifier
-    mod.attachedOperations.append(ConstraintFunction.activateConstraint(true))
-    return mod
-}
-
-public postfix func -- (constraint: NSLayoutConstraint) {
-    constraint.isActive = false
-}
-
-public postfix func -- (anchor: Anchor) -> Anchor {
-    let activatedAnchor = anchor
-    activatedAnchor.autoActivateConstraints = false
-    return activatedAnchor
-}
-
-public postfix func -- (modifier: LayoutModifier) -> LayoutModifier {
-    let mod = modifier
-    mod.attachedOperations.append(ConstraintFunction.activateConstraint(false))
-    return mod
-}
-
-public postfix func ^ (modifier: Float) -> LayoutModifier {
-    return modifier.C
-}
-
-public postfix func ^++ (modifier: Float) -> LayoutModifier {
-    return modifier.C++
-}
-
-public postfix func ^-- (modifier: Float) -> LayoutModifier {
-    return modifier.C--
-}
-
-public postfix func ^ (modifier: Double) -> LayoutModifier {
-    return Float(modifier).C
-}
-
-public postfix func ^++ (modifier: Double) -> LayoutModifier {
-    return Float(modifier).C++
-}
-
-public postfix func ^-- (modifier: Double) -> LayoutModifier {
-    return Float(modifier).C--
-}
-
-public postfix func ^ (modifier: Int) -> LayoutModifier {
-    return Float(modifier).C
-}
-
-public postfix func ^++ (modifier: Int) -> LayoutModifier {
-    return Float(modifier).C++
-}
-
-public postfix func ^-- (modifier: Int) -> LayoutModifier {
-    return Float(modifier).C--
-}
-
-public postfix func ^ (modifier: CGFloat) -> LayoutModifier {
-    return Float(modifier).C
-}
-
-public postfix func ^++ (modifier: CGFloat) -> LayoutModifier {
-    return Float(modifier).C++
-}
-
-public postfix func ^-- (modifier: CGFloat) -> LayoutModifier {
-    return Float(modifier).C--
-}
-
-
-
-
-
-
-
-
