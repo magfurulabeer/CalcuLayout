@@ -1,6 +1,13 @@
 # CalcuLayout
 CalcuLayout is a domain specific language to make iOS AutoLayout easy, intuitive, and look like simple math.
 
+## Swift 3 WARNING
+Due to upgrading to Swift 3, certain parts of the framework are bugged. If you know a solution, please send a pull request :)
+Current issues include:
+* Adjacent operators are in unordered precedence groups 'ConstraintPrecedence' and 'AdditionPrecedence'
+ -
+
+
 ## Basics
 This is how constraints are added natively in Swift through Anchors:
 
